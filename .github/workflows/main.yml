@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Deploy Website
 
 on:
   push:
@@ -6,22 +6,13 @@ on:
       - main
 
 jobs:
-  demo-job:
+  deploy:
     runs-on: self-hosted
 
     steps:
 
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Print Current Directory
-        run: pwd
-
-      - name: List Files
-        run: ls -la
-
-      - name: Print Date
-        run: date
-
-      - name: Display HTML
-        run: cat index.html
+      - name: Copy files
+        run: |
+          sudo cp index.html /var/www/html/index.html
