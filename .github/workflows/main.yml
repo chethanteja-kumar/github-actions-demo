@@ -1,19 +1,23 @@
 name: Deploy Website
 
-on: workflow_dispatch
+on:
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: self-hosted
 
     steps:
-
       - uses: actions/checkout@v4
 
-      - name: Copy files
+      - name: Install Apache
+        run: |
+          sudo apt update
+          sudo apt install apache2 -y
+
+      - name: Copy Website Files
         run: |
           sudo cp index.html /var/www/html/index.html
-          
+
       - name: Print Message
         run: echo "Workflow triggered manually!"
-        
