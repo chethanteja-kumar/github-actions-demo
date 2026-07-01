@@ -13,5 +13,7 @@ jobs:
       - name: Copy files
         run: |
           sudo cp index.html /var/www/html/index.html
-        run: echo "Running on a self-hosted runner (my own machine)"
+          
+      - name: Print Message
+        run: echo "Workflow triggered manually!"
         
